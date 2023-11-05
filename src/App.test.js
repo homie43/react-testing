@@ -2,7 +2,14 @@ import { render, screen } from '@testing-library/react';
 import App from './App';
 
 test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+    render(<App />); // тестируемый компонент
+    // через объект screen и функцию getByText мы получаем како-то элемент
+    const helloWorldElem = screen.getByText(/hello world/i);
+    const btn = screen.getByRole('button');
+    const input = screen.getByPlaceholderText(/input value/);
+
+    // toBeInTheDocument проверяет наличине ранее полученного объекта в документе
+    expect(helloWorldElem).toBeInTheDocument();
+    expect(btn).toBeInTheDocument();
+    expect(input).toBeInTheDocument();
 });
