@@ -40,10 +40,9 @@ describe('APP TEST', () => {
         // eslint-disable-next-line jest/valid-expect
         const inputValue = screen.queryByTestId('value-elem');
         expect(inputValue).toContainHTML('');
-        // fireEvent.input(input, {
-        //     target: { value: '12345' },
-        // });
-        userEvent.type(input, '12345');
+        fireEvent.input(input, {
+            target: { value: '12345' },
+        });
         // eslint-disable-next-line jest/valid-expect
         expect(inputValue).toContainHTML('12345');
     });
