@@ -1,10 +1,6 @@
 import Users from './Users';
 import { fireEvent, render, screen } from '@testing-library/react';
 import axios from 'axios';
-import userEvent from '@testing-library/user-event';
-import { MemoryRouter, Route, Routes } from 'react-router';
-import UserDeatilsPage from './UserDeatilsPage';
-import AppRouter from '../routes/AppRouter';
 import { renderWithRouter } from '../tests/helper/renderWithRouter';
 
 // мокаем axios
@@ -46,10 +42,10 @@ describe('users', () => {
 
     test('test redirect to details page', async () => {
         axios.get.mockReturnValue(response);
-        render(renderWithRouter(<Users />));
+        render(renderWithRouter(null, '/users'));
         const users = await screen.findAllByTestId('user-item');
         expect(users.length).toBe(3);
         fireEvent.click(users[0]);
-        expect(screen.getByTestId('users-page')).toBeInTheDocument();
+        expect(screen.getByTestId('user-page')).toBeInTheDocument();
     });
 });
