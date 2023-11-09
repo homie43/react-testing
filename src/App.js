@@ -34,10 +34,8 @@
 // export default App;
 
 import React from 'react';
-import { Routes, Route, Link } from 'react-router-dom';
-import MainPage from './pages/MainPage';
-import AboutPage from './pages/AboutPage';
-import ErrorPage from './pages/ErrorPage';
+import { Link } from 'react-router-dom';
+import AppRouter from './routes/AppRouter';
 
 const App = () => {
     return (
@@ -48,11 +46,10 @@ const App = () => {
             <Link to='/about' data-testid='about-link'>
                 about
             </Link>
-            <Routes>
-                <Route path='/about' element={<AboutPage />} />
-                <Route path='/' element={<MainPage />} />
-                <Route path='/*' element={<ErrorPage />} />
-            </Routes>
+            <Link to='/users' data-testid='users-link'>
+                users
+            </Link>
+            <AppRouter />
         </div>
     );
 };
