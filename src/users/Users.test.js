@@ -1,7 +1,8 @@
 import Users from './Users';
-import { fireEvent, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
 import axios from 'axios';
 import { renderWithRouter } from '../tests/helper/renderWithRouter';
+import userEvent from '@testing-library/user-event';
 
 // мокаем axios
 jest.mock('axios');
@@ -45,7 +46,9 @@ describe('users', () => {
         render(renderWithRouter(null, '/users'));
         const users = await screen.findAllByTestId('user-item');
         expect(users.length).toBe(3);
-        fireEvent.click(users[0]);
+        act(() => {
+            userEvent.click(users[0]);
+        });
         expect(screen.getByTestId('user-page')).toBeInTheDocument();
     });
 });

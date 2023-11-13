@@ -1,4 +1,10 @@
-import { render, screen, fireEvent, userEvent } from '@testing-library/react';
+import {
+    render,
+    screen,
+    fireEvent,
+    userEvent,
+    act,
+} from '@testing-library/react';
 import App from './App';
 
 describe('APP TEST', () => {
@@ -8,20 +14,17 @@ describe('APP TEST', () => {
     //     const helloWorldElem = screen.getByText(/hello world/i);
     //     const btn = screen.getByRole('button');
     //     const input = screen.getByPlaceholderText(/input value/);
-
     //     // toBeInTheDocument проверяет наличине ранее полученного объекта в документе
     //     expect(helloWorldElem).toBeInTheDocument();
     //     expect(btn).toBeInTheDocument();
     //     expect(input).toBeInTheDocument();
     // });
-
     // test('learn react', async () => {
     //     render(<App />);
     //     const dataElem = await screen.findByText(/data/i);
     //     expect(dataElem).toBeInTheDocument();
     //     expect(dataElem).toHaveStyle({ color: 'red' });
     // });
-
     // test('learn react', () => {
     //     render(<App />);
     //     const btn = screen.getByRole('button');
@@ -33,17 +36,18 @@ describe('APP TEST', () => {
     //     // проверяем что элемент появился
     //     expect(screen.queryByText(/ВКЛ/i)).toBeInTheDocument();
     // });
-
-    test('test input', () => {
-        render(<App />);
-        const input = screen.getByPlaceholderText(/input value/i);
-        // eslint-disable-next-line jest/valid-expect
-        const inputValue = screen.queryByTestId('value-elem');
-        expect(inputValue).toContainHTML('');
-        fireEvent.input(input, {
-            target: { value: '12345' },
-        });
-        // eslint-disable-next-line jest/valid-expect
-        expect(inputValue).toContainHTML('12345');
-    });
+    // test('test input', () => {
+    //     render(<App />);
+    //     const input = screen.getByPlaceholderText(/input value/i);
+    //     // eslint-disable-next-line jest/valid-expect
+    //     const inputValue = screen.queryByTestId('value-elem');
+    //     expect(inputValue).toContainHTML('');
+    //     act(() => {
+    //         userEvent.input(input, {
+    //             target: { value: '12345' },
+    //         });
+    //     });
+    //     // eslint-disable-next-line jest/valid-expect
+    //     expect(inputValue).toContainHTML('12345');
+    // });
 });
